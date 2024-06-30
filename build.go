@@ -41,10 +41,11 @@ func build(config *Config) error {
 			return err
 		}
 
+		url := strings.TrimSuffix(repo.URL, "/")
 		data := vanityTemplateData{
 			Root:    path.Join(config.Domain, root),
 			VCS:     repo.VCS,
-			RepoURL: repo.URL,
+			RepoURL: url,
 		}
 
 		err = t.ExecuteTemplate(f, "T", data)
