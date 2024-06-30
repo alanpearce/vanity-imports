@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 )
 
 var Version = "(devel)"
@@ -13,7 +12,7 @@ var Version = "(devel)"
 const usage = `Usage:
     vanity-imports [option]
 
-Options:				
+Options:
     --init                  creates a sample .vanity-imports.toml config file
     -c, --config CONFIG     path to the config. Defaults to .vanity-imports.toml
     -V, --version           print version
@@ -50,10 +49,6 @@ func main() {
 			log.Fatal(err)
 		}
 		return
-	}
-
-	if len(os.Args) > 1 {
-		log.Fatalf("unknown argument(s): %s", strings.Join(os.Args[1:], " "))
 	}
 
 	config, err := newConfig(configFlag)
